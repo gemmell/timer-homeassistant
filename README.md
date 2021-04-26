@@ -120,7 +120,7 @@ sensor:
         friendly_name: 'Timer - TV'
         unit_of_measurement: min
         value_template: "{% if (states.sensor.time.state) | float == 0%}
-        {{(((((state_attr ('sensor.timer_tv', 'timer') '| float ()) * 60) - (as_timestamp (now ()) - as_timestamp      (states.input_boolean.timer_tv.last_changed)) / 60) | round (0)}}
+        {{(((state_attr ('sensor.timer_tv', 'timer') | float ()) * 60) - (as_timestamp (now ()) - as_timestamp      (states.input_boolean.timer_tv.last_changed)) / 60) | round (0)}}
         {% endif%} "
         attribute_templates:
           timer:> -
@@ -130,7 +130,7 @@ sensor:
         friendly_name: 'Timer - Lights'
         unit_of_measurement: min
         value_template: "{% if (states.sensor.time.state) | float == 0%}
-        {{(((((state_attr ('sensor.timer_lights',' timer ')' float ()) * 60) - (as_timestamp (now ()) - as_timestamp (states.input_boolean.timer_lights.last_changed))) / 60) | round (0)}}
+        {{(((state_attr ('sensor.timer_lights',' timer ') float ()) * 60) - (as_timestamp (now ()) - as_timestamp (states.input_boolean.timer_lights.last_changed))) / 60) | round (0)}}
         {% endif%} "
         attribute_templates:
           timer:> -
